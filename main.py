@@ -1,4 +1,4 @@
-from tracker import add_job, view_jobs, edit_job, delete_job
+from tracker import add_job, view_jobs, edit_job, delete_job, search_jobs
 
 def main():
     while True:
@@ -7,19 +7,22 @@ def main():
         print("\n2. View all job applications")
         print("\n3. Edit a job application")
         print("\n4. Delete a job application")
-        print("\n5. Exit")
+        print("\n5. Search job applications")
+        print("\n6. Exit")
 
-        choice = input("Choose an option (1-3): ")
+        choice = input("Choose an option (1-6): ")
 
         if choice == "1":
             add_job()
         elif choice == "2":
             view_jobs()
         elif choice == "3":
-            edit_job();
+            edit_job()
         elif choice == "4":
-            delete_job();
+            delete_job()
         elif choice == "5":
+            search_jobs()
+        elif choice == "6":
             print("Goodbye!")
             break
         else:

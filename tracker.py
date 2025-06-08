@@ -79,3 +79,20 @@ def delete_job():
             print("Deletion canceled.")            
     except ValueError:
         print("Please enter a valid number.")
+
+def search_jobs():
+    try: 
+        df = pd.read_csv(DATA_FILE)
+    except FileNotFoundError:
+        print("No data found.")
+        return
+    keyword = input("Enter a keyword to search (company, title, status etc.): ").lower()
+
+    # Search across all columns
+    matches = df[df.apply(lambda row: keyword in row.astype(str).str.lower().to_string(), axis=1)]
+
+    if matches.empty:
+        print("No matching job applications found.")
+    else:
+        print("\nMatching Job Applications:\n")
+        print(matches.to_string(index=False))
